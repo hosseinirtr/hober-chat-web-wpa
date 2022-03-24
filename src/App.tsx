@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Router, Link, Route, Routes, } from 'react-router-dom';
+import Login from './component/partials/Login';
+import { connect } from 'react-redux';
+import * as ChatActions from './store/actions/chatActions';
 
-function App() {
+function App(props: any) {
+  useEffect(() => {
+    console.log('App component rendered');
+    props.setupSocket()
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>
+        page one
+      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login"
+            element={<Login />}
+          />
+          <Route path="/"
+            // component={Login}
+            element={(
+              <p>
+                Root
+              </p>
+            )}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
-export default App;
+const mapStateToProps = (state: any) => ({ ...state.auth, ...state.chat });
+const mapDispatchToProps = (dispatch: any) => ({
+  setupSocket: () => dispatch(ChatActions.setupSocket()),
+})
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
