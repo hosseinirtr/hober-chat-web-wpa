@@ -1,5 +1,3 @@
-import { useDispatch } from "react-redux";
-
 export const setupSocket = () => {
   return (dispatch: any) => {
     const socket = new WebSocket(`ws://${window.location.hostname}:8080`);
