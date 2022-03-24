@@ -1,4 +1,4 @@
-# hoberchat_web_Frontend
+# Hober Chat - WebApplication
 
 Hober Chat - A open source Web Application Messenger
 
