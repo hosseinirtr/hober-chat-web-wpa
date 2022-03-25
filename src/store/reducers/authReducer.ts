@@ -4,16 +4,17 @@ const defaultState = {
 };
 const auth = (state = defaultState, action: any) => {
   switch (action.type) {
-    // case 'SET_TOKEN':
-    //     return {
-    //         ...state,
-    //         token: action.token
-    //     }
-    // case 'SET_USER':
-    //     return {
-    //         ...state,
-    //         user: action.user
-    //     }
+    case "LOGGEDIN":
+      return {
+        ...state,
+        token: action.payload.data.session.id,
+        user: action.payload.data.user
+      };
+    case "LOGGEDOUT":
+      return {
+        ...state,
+        ...defaultState
+      };
     default:
       return state;
   }
