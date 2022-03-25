@@ -14,3 +14,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.form-wrapprt{
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+/* Chrome & Safari */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+body::-webkit-scrollbar {
+  width: 8px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  /* background: #fff; */
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: orange;
+  /* color of the scroll thumb */
+  border-radius: 5px;
+  /* roundness of the scroll thumb */
+  border: 3px solid orange;
+  /* creates padding around scroll thumb */
+}

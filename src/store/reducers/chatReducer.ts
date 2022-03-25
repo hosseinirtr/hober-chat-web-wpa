@@ -9,14 +9,15 @@ const defaultState = {
   typingUsers: [],
   typingUsersCount: 0,
   typingUsersString: "",
-  typingUsersStringShort: "",
+  typingUsersStringShort: ""
 };
 const chat = (state = defaultState, action: any) => {
+  console.log("chatReducer:", action, action.payload);
   switch (action.type) {
     case "SETUP_SOCKET":
       return {
         ...state,
-        socket: action.payload,
+        socket: action.payload
       };
     default:
       return state;

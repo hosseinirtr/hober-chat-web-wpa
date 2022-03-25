@@ -1,8 +1,8 @@
 const defaultState = {
   token: null,
-  user: {},
+  user: {}
 };
-const auth = (state = defaultState, action: { type: any; state: any }) => {
+const auth = (state = defaultState, action: any) => {
   switch (action.type) {
     // case 'SET_TOKEN':
     //     return {
