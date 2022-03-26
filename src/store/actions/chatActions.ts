@@ -12,12 +12,27 @@ export const setupSocket = () => {
       });
     };
     socket.onmessage = (message: any) => {
-      console.log("message", message);
       let data = JSON.parse(message.data);
-      console.log("data", data);
       switch (data.type) {
         case "LOGGEDIN":
           dispatch(AuthActions.loggedIn(data));
+          break;
+        case "GOT_USERS":
+          dispatch({
+            type: "GOT_USERS",
+            payload: data.data.users
+          });
+          break;
+        case "ADD_THREAD":
+          dispatch({
+            type: "ADD_THREAD",
+            payload: data.data
+          });
+          break;
+        case "NOT_GOT_USERS":
+          dispatch({
+            type: "NOT_GOT_USERS"
+          });
           break;
         default:
         // do nothing

@@ -18,7 +18,6 @@ export function Signup(props: any) {
         shallowEqual
     )
     useEffect(() => {
-        console.log("token", token);
         if (token) {
             console.log("Redirect to root");
             window.location.href = ("/")
@@ -69,7 +68,6 @@ export function Signup(props: any) {
             phoneNumber: '',
         },
         onSubmit: values => {
-            console.log("signup values: \n", values);
             if (socket) {
                 socket.send(JSON.stringify({
                     type: "SIGNUP",
@@ -81,11 +79,10 @@ export function Signup(props: any) {
             }
         }
     });
-
     useEffect(() => {
-        console.log("formik: \n", formik.errors);
-        console.log("formik.values: \n", formik.values);
-    }, [formik]);
+        console.log(formik.values)
+        console.log(formik.errors)
+    }, [formik])
     return (
         <div className='form-wrapprt my-auto'>
             <div className="w-full mx-auto py-10 max-w-xs">

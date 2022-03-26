@@ -1,0 +1,125 @@
+Sample Validations:
+
+yup.addMethod(yup.string, "justNumber", function (message) {
+  return this.test(`justNumber`, message, function(value) {
+    const { path, createError } = this;
+    const onlyNumberRegex = /\d+/;
+    return onlyNumberRegex.test(value) || createError({ path, message });
+  });
+});
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "justEnglish",
+  function(message) {
+    return this.test(`justEnglish`, message, function(value) {
+      const { path, createError } = this;
+      const onlyjustEnglish = /^[A-Za-z\s]+$/;
+      return onlyjustEnglish.test(value) || createError({ path, message });
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "validateNationalCode",
+  function(message) {
+    return this.test(`validateNationalCode`, message, function(value) {
+      const { path, createError } = this;
+      return validateNationalCode(value) || createError({ path, message });
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "checkOrganizationId",
+  function(message) {
+    return this.test(`checkOrganizationId`, message, function(value) {
+      const { path, createError } = this;
+      return checkOrganizationId(value) || createError({ path, message });
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "justNumber",
+  function(message) {
+    return this.test(`justNumber`, message, function(value) {
+      const { path, createError } = this;
+      const onlyNumberRegex = /\d+/;
+      return onlyNumberRegex.test(value) || createError({ path, message });
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "isAfterToday",
+  function(message) {
+    return this.test(`isAfterToday`, message, function(value) {
+      const { path, createError } = this;
+      return !compareDateWithToday(value) || createError({ path, message });
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "isBeforeToday",
+  function(message) {
+    return this.test(`isBeforeToday`, message, function(value) {
+      const { path, createError } = this;
+      return compareDateWithToday(value) || createError({ path, message });
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "duplicatedNationalIdentifier",
+  function(message) {
+    return this.test(`duplicatedNationalIdentifier`, message, function(value) {
+      const { path, createError } = this;
+      return (
+        !(value === props.customerNationalIdentifie) ||
+        createError({ path, message })
+      );
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(
+  yup.string,
+  "mobileFormat",
+  function(message) {
+    return this.test(`mobileFormat`, message, function(value) {
+      const { path, createError } = this;
+      return mobileFormat(value) || createError({ path, message });
+    });
+  }
+);
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(yup.string, "persianDateFormat", function(message) {
+        return this.test(`persianDateFormat`, message, function(value) {
+            const { path, createError } = this;
+            return dateFormatChecker(value) || createError({ path, message });
+        });
+    });
+--------------------------------------------------------------------------------------------------------------------------------
+ yup.addMethod(yup.string, "postalCodeValidate", function(message) {
+        return this.test(`postalCodeValidate`, message, function(value) {
+            const { path, createError } = this;
+            return (
+                postalCodeValidation(value) || createError({ path, message })
+            );
+        });
+    });
+--------------------------------------------------------------------------------------------------------------------------------
+yup.addMethod(yup.string, "fidaCodeValidation", function(message) {
+        return this.test(`fidaCodeValidation`, message, function(value) {
+            const { path, createError } = this;
+            return checkFidaCodeValidation(value) || createError({ path, message });
+        });
+    });

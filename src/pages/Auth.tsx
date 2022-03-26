@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { connect, shallowEqual, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { Login } from '../partials/Login';
 import { Signup } from '../partials/Signup';
 import * as ChatActions from '../store/actions/chatActions'
@@ -9,11 +9,14 @@ export function Auth(props: any) {
         ({ auth }: any) => auth.token,
         shallowEqual
     )
+    // const navigate = useNavigate();
+
     useEffect(() => {
-        console.log("token", token);
         if (token) {
             console.log("Redirect to root");
-            window.location.href = ("/")
+            <Redirect to='/falseyRoute' />
+            // navigate('/')
+            // window.location.href = ("/")
         }
     }, [token])
     return (

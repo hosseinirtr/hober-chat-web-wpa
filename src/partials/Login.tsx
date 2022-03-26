@@ -17,7 +17,6 @@ export function Login(props: any) {
         shallowEqual
     )
     useEffect(() => {
-        console.log("token", token);
         if (token) {
             console.log("Redirect to root");
             window.location.href = ("/")
@@ -38,6 +37,7 @@ export function Login(props: any) {
         // .min(5, "Your user name must be at least 5 characters"),
         password: yup.string()
             .required("Your password is required")
+        // disable for test
         // .min(8, "Your password must be at least 8 characters")
         // .matches(
         //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
@@ -51,12 +51,10 @@ export function Login(props: any) {
     const formik = useFormik({
         validationSchema: validation,
         initialValues: {
-            email: 'test@test.com',
-            // email: 'me@hosseinhosseini.net',
-            password: 'test',
+            email: '',
+            password: '',
         },
         onSubmit: values => {
-            console.log("signup values: \n", values);
             if (socket) {
                 socket.send(JSON.stringify({
                     type: "LOGIN",
@@ -68,13 +66,10 @@ export function Login(props: any) {
             }
         }
     });
-
-    // useEffect(() => {
-    //     console.log("formik: \n", formik.errors);
-    //     console.log("formik.values: \n", formik.values);
-    // }, [formik]);
-
-
+    useEffect(() => {
+        console.log(formik.values)
+        console.log(formik.errors)
+    }, [formik])
     return (
         <div className='w-full h-full form-wrapprt'>
             <div className="w-full mx-auto py-10 max-w-xs">
@@ -92,7 +87,7 @@ export function Login(props: any) {
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                             Email
                         </label>
-                        <input name="Email" defaultValue={formik.values.email} onChange={formik.handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Email" />
+                        <input name="email" defaultValue={formik.values.email} onChange={formik.handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" placeholder="Email" />
                     </div>
                     <div className="mb-6">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
