@@ -54,7 +54,8 @@ export function Login(props: any) {
             email: '',
             password: '',
         },
-        onSubmit: values => {
+        onSubmit: (values, { setSubmitting }) => {
+            console.log("onSubmit", values);
             if (socket) {
                 socket.send(JSON.stringify({
                     type: "LOGIN",
@@ -64,6 +65,7 @@ export function Login(props: any) {
                 console.log("no socket", socket);
                 openNotification("Dear User")
             }
+            setSubmitting(false)
         }
     });
     useEffect(() => {

@@ -18,6 +18,7 @@ export function ThreedView() {
     }, [])
 
     let thisWidth = window.innerWidth;
+    console.log("thisWidth", thisWidth);
     let threadWidth = isMobile ? thisWidth : thisWidth - 250
     return (
         <div className='flex-row'>
@@ -49,7 +50,7 @@ export function ThreedView() {
                     >
                         <path
                             className="text-green-100 fill-current"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M12 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
                     </svg>
                 </div>

@@ -32,7 +32,7 @@ export default function Test() {
                     >
                         <path
                             className="text-green-100 fill-current"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M12 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
                     </svg>
                 </div>
